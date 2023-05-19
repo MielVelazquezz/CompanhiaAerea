@@ -4,7 +4,7 @@ var comprar = 1
 var consultar = 2
 var mapa = 3
 var emitir = 4
-
+var assento = ""
 
 while(informacao != 0){
     console.log('')
@@ -28,7 +28,7 @@ while(informacao != 0){
         while(idade < 18){
             idade = readline.question("Voce nao possui idade o suficiente, tente novamente.")
         }
-        var assento = readline.question('Informe seu assento: ');
+        assento = readline.question('Informe seu assento: ');
         var origem = readline.question('Informe sua origem: ');
         var destino = readline.question('Informe seu destino: ');
         
@@ -60,23 +60,35 @@ while(informacao != 0){
 
     }
     else if(informacao == 3){
-        var assentoA = 0
-        var assentoB = 0
+        var assentoA = ""
+        var assentoB = ""
+        var validaAssento = false
 
         console.log('')
         console.log('+--------Passagens aérias--------+')
-        console.log("você esta em -> Mapa de Assentos")
+        console.log("você esta em --> Mapa de Assentos")
         console.log("--------------------------------")
-        for(assentoA = 1;assentoA < 13; assentoA ++)
-        console.log("A"+assentoA)
-       
-        for(assentoB = 1; assentoB < 13; assentoB ++)
-       
-        console.log ("B"+assentoB)
+        for(var poltrona = 1;poltrona < 13; poltrona ++){
 
-        if(assentoB=assento){
-            console.log("+---- O assento "+assento+" está ocupado ----+")
-        }
+           var assentoDaVezA = "A"+poltrona
+           var assentoDaVezB = "B"+poltrona
+
+           if( assentoDaVezA == assento){
+                assentoA += " X "
+                assentoB += assentoDaVezB + " "
+           }
+           else if(assentoDaVezB == assento){
+                assentoB += " X "
+                assentoA += assentoDaVezA + " "
+           }
+           else{
+                assentoA += assentoDaVezA + " "
+                assentoB += assentoDaVezB + " "
+           }
+        }     
+        console.log(assentoA)
+        console.log(assentoB)
+      
         console.log("+--------------------------------+")
     }
     else if(informacao == 4){
